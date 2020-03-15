@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<head>
+  <title>Deep learning ^^</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <div>
+
+      <div>
+        <h3>Deep Learning</h3>
+      </div>
+
+      <div>
+        <p>
+          Neural Networks.
+          <a href="https://classroom.udacity.com/courses/ud188/lessons/b4ca7aaa-b346-43b1-ae7d-20d27b2eab65/concepts/34148307-a49b-422c-b9bd-f6ac62bf35af">Reference</a>
+
+
+        </p>
+        <ul>
+          <li>Find the best line that separates 2 set of points</li>
+          <li>The line is in the form w1x1+w2x2+b=0 (or Wx+b=0)</li>
+          <li>If w1x1+w2x2+b>0 then (x1,x2) is predicted as in set1, If w1x1+w2x2+b<0 then (x1,x2) is predicted as in set2</li>
+          <li>Goal-> find w1,w2 and b such accuracy is higher. (algorithm: get closer to misclassified points)</li>
+          <li>Accuracy-> higher when prediction matches the labels.</li>
+          <li>for finding W and b that minimizes the error, we use gradient descent, thus, classification must be continuous</li>
+          <li>Activation function: y=act(Wx+b)
+            <ul>
+              <li>step function: discrete</li>
+              <li>sigmoid: 1/(1+exp(-x)) -> continuous, simple derivative.</li>
+                <ul>
+                  <li>In interval [0,1], cumulative probability function</li>
+                  <li>slow training, good for binary decision(last layer)</li>
+                </ul>
+                <li>relu: max(x,0). faster training. not good for final layer.</li>
+            </ul>
+            <li>softmax: sigmoid for multiclasses.</li>
+            <ul>
+              <li>formula: exp(zi)/(exp(z1)+...+exp(zn))</li>
+            </ul>
+            <li>one-hot encoding: transform possible values of a feature in many 0/1 features.</li>
+            <li>minimize error = maximize probability of each point is correct classified</li>
+            <li><ul>
+              <li>Multiplication if not good. We use log:</li>
+            </ul></li>
+            <li>Cross-Entropy: -sum_i yi ln(pi) + (1-yi) ln(1-pi), where i is each point, yi is 0 or 1(if is the corresponding class or not)</li>
+            <li><ul>
+              <li>goal: minimize.</li>
+              <li>multiclass:-sum_i sum_j y_ij ln(p_ij), where j are the classes, and y_ij are multiclass labels(one-hot encoded).</li>
+            </ul></li>
+            <li>Error function= cross-entropy /m (number of point)</li>
+            <li>Gradient descent: minimize the error function: -sum_i yi ln(pi) + (1-yi) ln(1-pi)/m, for y=sigmoid(Wx+b)</li>
+            <li><ul>
+              <li>Solution: find the gradient and go in the inverse direction.</li>
+              <li>Find the gradient with derivative chain formula</li>
+              <li>update wi'->wi+a(y-y')xi; b'->b+a(y-y')</li>
+            </ul></li>
+            <li>Non-Linear:
+              <ul>
+                <li>Combine 2 (or more) linear models</li>
+                <li>Give different weights(linear combination), and add a Bias and add an activate function(sigmoid to give a probability)</li>
+                <li>Then, this is other perceptron!</li>
+                <li>Mix them and we form a neural network.</li>
+                <li>For multiclass, multiple outputs, one for each class.</li>
+              </ul>
+            </li>
+            <li>FeedForward: apply the network to input data.
+              <ul>
+                <li>y=model(x)</li>
+              </ul>
+            </li>
+            <li>Backpropagation: optimize weights with chain rule</li>
+          </li>
+        </ul>
+      </div>
+      <div class="deep">
+        <p>Deep learning</p>
+        <ul>
+          <li>Lots of layers</li>
+          <li>Problem:
+              -Vanishing gradient</li>
+          <li>Problem:
+              -Computationally expensive</li>
+          <li>Training optimization:
+            <ul>
+              <li>choose simple model</li>
+              <li>in the problem: class 1:apple, cat / class 2: blue dog, yellow dog</li>
+              <li>Underfit: class1: non-animal, class 2: animal</li>
+              <li>overfit: class2: yellow or blue dog => misclasify the other dogs=> too specific=> not generalize</li>
+              <li>trade off: simple model underfit, complex overfit.</li>
+            </ul>
+          </li>
+          <li>Overfitting prevention:
+            <ul>
+              <li>Early stop: stop training when test error is minimum.</li>
+              <li>Regularization:
+                <ul>
+                  <li>-large coefficients->overfit. solution: penalize large weights.</li>
+                  <li>error=-sum_i sum_j y_ij ln(p_ij) + lambda ||W||_l1(or l2)</li>
+                  <li>L1: good for feature selection(sparse classification)</li>
+                  <li>L2: better for trainig models</li>
+                </ul>
+              </li>
+              <li>Dropout:Turn off random nodes on trainig</li>
+            </ul>
+          </li>
+          <li>Local minima problem solving:
+            <ul>
+              <li>random restart</li>
+              <li>relu activation function (not in the last layer)</li>
+              <li>stochastic gradient descent: take random subset (batch) at each epoch</li>
+              <li>Learning rate decay (if not working, decrease the learning rate)</li>
+              <li>Momentum: step= step(n)+beta step(n-1)+beta^2 step(n-2)...</li>
+              <li>other error functions</li>
+            </ul>
+          </li>
+          <li>Model Validation:
+            <ul>
+              <li>3 sets: training, validation and test sets</li>
+              <li>train on training set (bckpropagate and update weights) </li>
+              <li>at end of epoch, test on validation set.</li>
+              <li>stop when validation loss start to increase again</li>
+              <li>test on a different set from validation set.</li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+      <div class="CNN">
+        <p>CNNs: Convolutional neural networks</p>
+        <ul>
+          <li>weights are filters</li>
+          <li>apply the layer by filtering.</li>
+          <li>pooling: downscale</li>
+          <li>maxpooling: get the max in a square range</li>
+          <li>stride: jump of the filter; padding: num of pixels to include in image for filtering</li>
+          <li>num of parameters: out_channels*fil_size^2*depth of previous layer</li>
+          <li>capsule networks:
+            <a href="https://classroom.udacity.com/courses/ud188/lessons/b1e148af-0beb-464e-a389-9ae293cb1dcd/concepts/8caa6477-176c-49eb-b09e-c48f373c9f68">reference</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <div class="Dataug">
+      <p>Data augmentation</p>
+      <ul>
+        <li>Apply random transform to the data</li>
+        <li>Rotation, flip, translation...</li>
+      </ul>
+    </div>
+    <div class="style">
+      <p>Style transfer</p>
+      <ul>
+        <li>Train a CNN, for classifying for instance (or load vgg19)</li>
+        <li>Have to separate style from content:</li>
+        <li>Style:
+        <ul>
+          <li>feedfoward the style image</li>
+          <li>flatten result of an layer, stack in a matrix, multiply by transpose(gram matrix)</li>
+          <li>repeat for each layer i (conv i_1), give higher weights (w_i) to lower layers (w_i)</li>
+          <li>Style loss: a sum_i w_i(T_s,i-S_s,i)^2. T_s is a target, S_s is the style image</li>
+        </ul></li>
+        <li>content:</li>
+        <ul>
+          <li>similarity in conv 4_2</li>
+          <li>Content loss: min square error between a target and a sample image at this layer.</li>
+        </ul>
+        <li>total loss: style loss+content loss.</li>
+        <li>goal: backpropagate to minimize this loss by changing target image.</li>
+        <li>style weight is much higher than content</li>
+      </ul>
+    </div>
+    <div class="rnn">
+      <p>RNNs</p>
+      <ul>
+        <li>RNNs: Recurrent neural networks</li>
+        <li>LSTM: Long short-term memory</li>
+        <li><a href="https://classroom.udacity.com/courses/ud188/lessons/a8fc0724-37ed-40d9-a226-57175b8bb8cc/concepts/e0568d87-96f4-4270-8552-22dc05a1e4f4">reference</a></li>
+      </ul>
+    </div>
+
+    <div class="gans">
+      <p>GANs: Generative adversarial networks</p>
+      <ul>
+        <li>-noise->generative network->fake image(data)</li>
+        <li>real data+fake image->discriminative network->is fake or not</li>
+        <li>CDGANs: Convolutional deep GANS
+          <ul>
+          <li>batch normalization is a must</li>
+          <li>not fully hidden layers</li>
+          <li>avoid pooling</li>
+          <li>Use ReLu (prevent vanishing gradient)</li>
+        </ul></li>
+        <li>CGANs: Conditional GANS
+          <ul>
+          <li>noise+features->generative net->fake images</li>
+          <li>real data+fake image+features->discriminative net->is fake?</li>
+        </ul></li>
+        <li>Wasserstein: improve the loss function</li>
+      </ul>
+    </div>
+    o ideal é vc fazer uma camada inicial, e roda o treino, e olha o erro quadrático médio dos seus valores preditos em comparação com a sua amostra de validação
+Uma grande distância entre as curvas simboliza falta de camadas
+Uma grande diferença de forma de curvas simbola falta de neurônios
+
+    </body>

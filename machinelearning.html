@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+  <title>git ^^</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+  Resumao machine learning with sklearn!!!!!
+-4 topics:
+-data set and question:
+  -have enough data?; can I define a question?;enough/right features?
+  -type of data: numerical (order), categorical (classes), time series (date), text (words)
+  -continuous vs discrete: continuous->has an order, discrete-> neibours not related
+  -Feature selection:use human intuition->code new feature->visualise->repeat
+      -Ignore feature:noisy, overfitting, correlated with other features, slow training
+      -Fewer features->high bias, less overfitting. So, try to balance.
+
+-Feature
+  -exploration: inspect for correlations; outlier removal; imputation; cleaning
+  -creation: think about like a human
+  -representation: text vetorization; discretization
+  -scaling: mean subtraction; minmax scaler; standard scaler
+    -Feature scaling: give equal importance to features(all to 0 to 1)
+      -sklearn.preprocessing.MinMaxScaler
+  -selection: KBest; percentile; recursive feature elimination
+  -transforms: PCA; ICA
+    -PCA:features->principal components(PC); higher variance->higher rank PC; use PC as features; max PCs=nof features
+      -for latent features; dimension reduction; high dimension data visualization
+      -sklearn.decomposition.PCA; pca=PCA(n_PC);pca.fit(data);firstPC=pca.components_[0];secondPC=pca.components_[1]...
+  -Text-> bag of words(use this as feature instead of words, each word is a feature): histogram of words.
+    -Stemming->grouping with same root
+    -python: import nltk(natural language toolkit))
+
+
+-Algorithm and Parameters
+  -Non-supervised: K-means; spectral clustering; PCA; mixture models/EM; outlier detection
+  -Supervised with continuous output:
+    -Regression: linear; lasso; decision tree; SVM(SVR)
+  -Supervised with discrete output:
+    -Classification: decision tree; Nayve bayes; SVM; Random forest; adaboost; k nearest neibours; LDA; logistic Regression
+  -Tune Parameters: Params of algorithms; visual inspection; performance on test data; GridSearchCV
+-Evaluation
+  -Validation: train/test split; k-fold; visualize
+  -Pick metrics: SSE/r-square; precision; Recall; F1 score; ROC curve; custom; bias/variance
+
+-Bias vs variance: data doesnt matter vs overfitting
+-accuracy vs training set size: the more, the better, but saturates eventually (log-like curve)
+-type of data: numerical (order), categorical (classes), time series (date), text (words)
+-continuous vs discrete: continuous->has an order, discrete-> neibours not related
+-outlier: exclude if is error, identify if want it
+-train/fit->remove outiliers->train again
+-Feature scaling: give equal importance to features(all to 0 to 1)
+-sklearn.preprocessing.MinMaxScaler
+-Text-> bag of words(use this as feature instead of words, each word is a feature): histogram of words.
+-Stemming->grouping with same root
+-python: import nltk(natural language toolkit))
+-Feature selection:use human intuition->code new feature->visualise->repeat
+-Ignore feature:noisy, overfitting, correlated with other features, slow training
+-Fewer features->high bias, less overfitting. So, try to balance.
+-Lasso: min SSE(error) + lambda coefs of regression (nof features). (y=m1x1+m2x2+m3x3->m1=1, m2=0.5, m3=0...)
+-sklearn.linear_model.Lasso; regression=Lasso(); regression.fit(features)
+-PCA:features->principal components(PC); higher variance->higher rank PC; use PC as features; max PCs=nof features
+-for latent features; dimension reduction; high dimension data visualization
+-sklearn.decomposition.PCA; pca=PCA(n_PC);pca.fit(data);firstPC=pca.components_[0];secondPC=pca.components_[1]...
+-Train/Test: give estimate; check if overfit; however decrease training data, because of splitting
+-python: Xtrain,Xtest,Ytrain,Ytest=sklearn.cross_validation.train_test_split(features,labesls,test_size=0.2)
+-K-fold cross_validation: separate the train and test for every combination of train and test
+-more train time; more run time; more accuracy
+-kf=sklearn.cross_validation.KFold(n,folds)
+-kf.train_indices, kf.test_indices-> we can iterate using them. But you have to shuffle
+-GridSearchCV:select params for optimizing the model (SVM, decision tree, etc)
+-sklearn.model_selection.GridSearchCV
+-params={'p1':('v1','v2'),'p2':[1,10]}; alg=alg(); clf=GridSearchCV(alg,params);clf.fit()...
+-Confusion matrix: labels of true vs labels of predict;
+-help to find false positive(FP), false negative(FN), true positive(TP), and false positive?.
+-Recall: TP(TP+FN). P(label) given it really was the label (row/row(i))-> good to identify
+-Precision: TP(TP+FP). given it observe label, what the chance it really is the label(colum/colum(i)). false positives...
+-F1 Score: both precision and recall are good
+-Supervised Classification (output/label is classes/dicrete;find decision boundaries;evaluate accuracy):
+-from sklearn.model import alg
+ clf=alg(params)
+ clf.fit(train_features,train_labels)
+ pred=clf.predict(test_features)
+ from sklearn.metrics import accuracy_score
+ accuracy_score(y_true, y_pred)
+
+-Nayve Bayes: Classify based on Bayes theorem
+  Good: simple, efficient, Bad: can break?
+
+-SVM: take features to other space (easy to separate) and separate
+Parameters:
+Kernel: RBF>linear
+C: smooth (small) vs overfit(higher)
+Gamma:decision points reach: low(far) vs high(close)
+Affected by scaling
+
+-Decision tree:Break regions in vertical/horizontal lines using entropy.
+Parameters: min samples split: low-> overfitting
+-random forest: ensemble of decision trees
+-k-nearest neibours: select the closer. easy and simple
+-adaboost:?
+
+Regression: (output is continuous/numerical;find best line/func;evaluate r-square/SSE)
+
+linear model: Ax+b
+reg.coef_ x+ reg.intercept_
+Performance: r-squared->reg.score
+outliers-> train/fit->remove outiliers(10%~)->train again
+
+-Clustering (no supervised training)
+K-means: choose the number of clusters, then the alg group the points
+bad:random init can miscassify-> run more than 1 time to be sure
+Affected by scaling
+  </body>

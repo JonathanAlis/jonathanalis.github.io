@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+  <title>git ^^</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <div>
+
+      <div>
+        <h3>html/css</h3>
+      </div>
+
+      <div>
+        <p>
+          My notes on html/css
+        </p>
+        <ul>
+          <li>&#60;!DOCTYPE html>: first line: means html5</li>
+          <li>&#60;name&#62; content &#60;/name&#62;:start and and of a tag</li>
+          <li>not all tags need an end tag</li>
+          <li>&#60;head>: metadata, information, usually not displayed in the page</li>
+          <li>&#60;body>: content of page</li>
+          <li>&#60;hn> : headings, n=1:6, n changes size</li>
+          <li>view page source: shows the html</li>
+          <li>&#60;ul>, &#60;ol>, &#60;li>: unordered list, ordered list, list item</li>
+          <li>Images:
+            <ul>
+              <li>&#60;img src="image name">: display image. You have to put the image on folder, or put a link</li>
+
+              <li>&#60;img src="image name" height="200" width="300">:scale image in pixels, height and width are optional.</li>
+                Example: <img src="belle.jpg" height="100" width="300">
+              <li>&#60;img src="image name" width=10%>: scale related to the size of the page (try scalling this page)</li>
+                  Example: <img src="belle.jpg" width=10%>
+            </ul>
+          </li>
+          <li>&#60;table>&#60;tr>&#60;th>&#60;td>: table, table row, table heading, table data.</li>
+          <li>&#60;form> &#60;input text="text"> &#60;button>Submit!&#60;\button> &#60;\form>: submit information.</li>
+          Example: <form> <input text="text"> <button type="button" name="button">Submit!!!</button>
+          <li>html are trees: Docmunet Object Model </li>
+          <li>&#60;h1 style="color:blue;text-align:center;">: change style</li>
+            Example: <h1 style="color:blue;text-align:center;"> test </h1>
+          <li>&#60;a href="link" Click here>: go to link page</li>
+          <li>"&#60;a href="#id" Click here>: go to id in this page"</li>
+          <li>&#60;div class="header">: <header></li>
+          <li>&#60;div class="nav">: <nav></li>
+          <li>&#60;datalist> &#60;option value="option1">...: list of data</li>
+
+      </div>
+      <div class="css">
+        <h3>CSS: Cascade Style Sheet</h3>
+        <ul>
+          <li>style &#60; style="color:blue;text-align:center;">: change style</li>
+          <li>better not mix with content of html</li>
+          <li>in header: &#60;style> h1{color:blue;text-align:center;} <\style>: apply to all h1 tags.</li>
+          <li>but can also put in a different file: .css</li>
+          <li>on header:<link rel="stylesheep" href="style.css"></li>
+          <li>in file.css: h1{color:blue;text-align:center;}</li>
+          <li>Atributes:
+            <ul>
+              <li>color, background-color: name, hexadecimal color</li>
+              <li>size, margin, padding: pixels</li>
+              <li>font-family, font-size, font-weight (bold)</li>
+              <li>border: make boxes around elements, bordercollapse=collapse: remove double borders</li>
+            </ul>
+          </li>
+          <li>&#60;div id="label">: name it</li>
+          <li>#label {}: apllies to al labels with id "label"</li>
+          <li>.clasname{}:apply to all classes (elements that have class="classname"</li>
+          <li>Selectors:
+            <ul>
+              <li>h1,h2{}: apply to both</li>
+              <li>ol li{}: apply to li that are children of ol (and to ol).</li>
+              <li>ol>li{}: apply only to li that are first gen child</li>
+              <li>input[type=text]{}: only when type is meant to be text (in a form for instance)</li>
+              <li>input[type=number]{}: only when type is meant to be number</li>
+              <li>pseudo class:</li>
+              <li>button:hover{}: apply when hovering the button (is a pseudo class)</li>
+              <li>a::before{content:"something"}: substitutes #.</li>
+              <li>p::selection{}: on selecting something</li>
+            </ul>
+          </li>
+          <li>Responsive design:
+            <ul>
+              <li>media queries: style depend on media.</li>
+              <li>@media print{.screen-only{display:none}}: not shown in printing</li>
+              <li>@media (min-width:500px){}: if viewed in 500 or more px</li>
+              <li>@media (max-width:499px){}: if viewed in 499 or less px</li>
+              <li>&#60;meta name="viewport content="width=device-width">: adapt the viewport to device</li>
+              <li>flexbox:display:flex; : flexibly change the arrange of things.</li>
+              <li>grid: display:grid; control grid of tables</li>
+            </ul>
+          </li>
+          <li>bootstrap:
+            <ul>
+              <li>divide the page in 12 columns</li>
+              <li>get style from a link in internet</li>
+              <li>class has names: col-3, col-lg-6, alert alert-primary, etc.</li>
+              <li>see: getbootstrap.com</li>
+            </ul>
+          </li>
+
+          <li> Variables:
+            <ul>
+              <li>Sass: .scss</li>
+              <li>$colar: red; ul{color:$color}: $color would chance every place that is $color</li>
+              <li>however html do not understand scss.</li>
+              <li>sass file.scss file.css: compile</li>
+              <li>sass --watch file.scss:file.css: compile automatically</li>
+              <li>nest easily</li>
+              <li>%name{}: template</li>
+              <li>.class1{@extend %name}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
